@@ -67,7 +67,7 @@ st.markdown("""
         margin-top: 5px;
     }
     </style>
-""", unsafe_with_html=True)
+""", unsafe_allow_html=True)
 
 # ==========================================
 # SECTION 1: HERO HEADER (Top Banner)
