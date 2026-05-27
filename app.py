@@ -1,5 +1,6 @@
 import streamlit as st
-import leafmap
+import leafmap.foliumap as leafmap
+from streamlit_folium import st_folium
 import folium
 
 # 1. Page Configuration (Full Width, Custom Title)
@@ -121,16 +122,32 @@ with col_map:
     center_coords = regions[selected_region]["center"]
     zoom_level = regions[selected_region]["zoom"]
     
-    m = leafmap.Map(center=center_coords, zoom=zoom_level, layers_control=True)
+    # Initialize Map with drawing and standard zoom tools built-in
+    m = leafmap.Map(center=center_coords, zoom=zoom_level, draw_control=True, measure_control=True)
+    
+    # Add High-Resolution Satellite Basemap
     m.add_basemap("Esri.WorldImagery")  
     
-    # Corrected Layer Overlays using standard leafmap tile handling
+    # Handle overlays cleanly using native tile additions
     if analysis_type == "NDVI (Crop & Vegetation Health)":
-        m.add_wms_layer(url='https://tiles.maps.eox.at/wms/', layers='s2cloudless-2020', name="NDVI Layer", attribution="EOX", opacity=0.5)
+        folium.TileLayer(
+            tiles='https://tiles.maps.eox.at/wms/?service=wms&request=getmap&version=1.1.1&layers=s2cloudless-2020&styles=&format=image/jpeg',
+            attr='EOX Cloudless',
+            name='NDVI Overlay',
+            overlay=True,
+            opacity=0.6
+        ).add_to(m)
     elif analysis_type == "NDWI (Flood & Water Mapping)":
-        m.add_tile_layer(url='https://tile.openstreetmap.org/{z}/{x}/{y}.png', name="Hydrology Overlay", attribution="OpenStreetMap", opacity=0.4)
+        folium.TileLayer(
+            tiles='https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            attr='OpenStreetMap',
+            name='Hydrology Overlay',
+            overlay=True,
+            opacity=0.4
+        ).add_to(m)
         
-    m.to_streamlit(height=500)
+    # Render map using the high-performance st_folium display pipeline
+    st_folium(m, width="100%", height=550, returned_objects=[])
 
 # ==========================================
 # SECTION 3: SECTORS SERVED & INSIGHTS
