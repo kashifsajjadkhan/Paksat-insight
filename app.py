@@ -1,5 +1,6 @@
 import streamlit as st
-import leafmap.foliumap as leafmap
+import leafmap
+import folium
 
 # 1. Page Configuration (Full Width, Custom Title)
 st.set_page_config(
