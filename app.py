@@ -9,7 +9,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# 2. Complete Custom CSS to match the exact theme
+# 2. Complete Custom CSS to match the premium theme
 st.markdown("""
     <style>
     /* Dark Premium Theme Colors */
@@ -124,11 +124,11 @@ with col_map:
     m = leafmap.Map(center=center_coords, zoom=zoom_level, layers_control=True)
     m.add_basemap("Esri.WorldImagery")  
     
-    # Layer Overlays Based on Menu Selection
+    # Corrected Layer Overlays using standard leafmap tile handling
     if analysis_type == "NDVI (Crop & Vegetation Health)":
-        m.add_tile_layer(url='https://tiles.maps.eox.at/wms/?service=wms&request=getmap&version=1.1.1&layers=s2cloudless-2020&styles=&format=image/jpeg', name="NDVI Layer", opacity=0.5)
+        m.add_wms_layer(url='https://tiles.maps.eox.at/wms/', layers='s2cloudless-2020', name="NDVI Layer", attribution="EOX", opacity=0.5)
     elif analysis_type == "NDWI (Flood & Water Mapping)":
-        m.add_tile_layer(url='https://tile.openstreetmap.org/{z}/{x}/{y}.png', name="Hydrology Overlay", opacity=0.4)
+        m.add_tile_layer(url='https://tile.openstreetmap.org/{z}/{x}/{y}.png', name="Hydrology Overlay", attribution="OpenStreetMap", opacity=0.4)
         
     m.to_streamlit(height=500)
 
@@ -196,7 +196,7 @@ with st.expander("❓ Can I export data directly for university research papers?
 st.markdown("""
     <div class="custom-footer">
         <p>© 2026 Pak Land Watch. All Rights Reserved.</p>
-        <p>Built with ❤️ for the students and researchers of Pakistan</p>
+        <p>Developed for the students and researchers of Pakistan</p>
         <div class="watermark">Built by Kashif Sajjad Khan</div>
     </div>
 """, unsafe_allow_html=True)
