@@ -9,7 +9,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# 2. Complete Custom CSS to match the exact theme of image_235489.jpg
+# 2. Complete Custom CSS to match the exact theme
 st.markdown("""
     <style>
     /* Dark Premium Theme Colors */
@@ -81,14 +81,14 @@ st.markdown("""
             researchers, and environmentalists across Pakistan. No coding required.
         </p>
     </div>
-""", unsafe_with_html=True)
+""", unsafe_allow_html=True)
 
 st.write("---")
 
 # ==========================================
 # SECTION 2: THE INTERACTIVE WORKSPACE (The Core Map)
 # ==========================================
-st.markdown("<h3 style='color:#FFFFFF;'>🛰️ Interactive GIS Mapping & Analytics Workspace</h3>", unsafe_with_html=True)
+st.markdown("<h3 style='color:#FFFFFF;'>🛰️ Interactive GIS Mapping & Analytics Workspace</h3>", unsafe_allow_html=True)
 
 # Layout for controls and map
 col_controls, col_map = st.columns([1, 3])
@@ -135,7 +135,7 @@ with col_map:
 # ==========================================
 # SECTION 3: SECTORS SERVED & INSIGHTS
 # ==========================================
-st.markdown("<div class='section-title'>Sectors We Serve For Analytical Insights</div>", unsafe_with_html=True)
+st.markdown("<div class='section-title'>Sectors We Serve For Analytical Insights</div>", unsafe_allow_html=True)
 
 col_s1, col_s2, col_s3 = st.columns(3)
 with col_s1:
@@ -144,7 +144,7 @@ with col_s1:
             <h4>🌾 Agriculture & Crops</h4>
             <p>Monitor seasonal health tracking for Rice, Wheat, and Cotton belts without needing manual land surveys.</p>
         </div>
-    """, unsafe_with_html=True)
+    """, unsafe_allow_html=True)
 
 with col_s2:
     st.markdown("""
@@ -152,7 +152,7 @@ with col_s2:
             <h4>🏢 Urban Growth & Planning</h4>
             <p>Analyze how metropolitan footprints like Lahore, Karachi, and Islamabad are shifting over timeline sequences.</p>
         </div>
-    """, unsafe_with_html=True)
+    """, unsafe_allow_html=True)
 
 with col_s3:
     st.markdown("""
@@ -160,7 +160,7 @@ with col_s3:
             <h4>⚠️ Disaster Management</h4>
             <p>Trace flooding pools along the Indus River basin and observe glacier shrinkage in northern mountain belts.</p>
         </div>
-    """, unsafe_with_html=True)
+    """, unsafe_allow_html=True)
 
 # ==========================================
 # SECTION 4: GRADIENT CALL-TO-ACTION (CTA) BOX
@@ -170,13 +170,13 @@ st.markdown("""
         <h3 style="margin-top:0; color:white;">Need help turning data into insights?</h3>
         <p style="color: #E2E8F0;">Download raw GeoJSON shapes and bounding coordinates to use straight in your academic presentations.</p>
     </div>
-""", unsafe_with_html=True)
+""", unsafe_allow_html=True)
 
 # ==========================================
 # SECTION 5: OPEN DATA SOURCES & FAQ
 # ==========================================
-st.markdown("<div class='section-title'>Our Data Sources & Open-Access Accuracy</div>", unsafe_with_html=True)
-st.write("<p style='text-align:center; color:#A0AEC0;'>This application pulls live, free-tier observation feeds directly from global earth asset networks:</p>", unsafe_with_html=True)
+st.markdown("<div class='section-title'>Our Data Sources & Open-Access Accuracy</div>", unsafe_allow_html=True)
+st.write("<p style='text-align:center; color:#A0AEC0;'>This application pulls live, free-tier observation feeds directly from global earth asset networks:</p>", unsafe_allow_html=True)
 
 col_d1, col_d2, col_d3 = st.columns(3)
 col_d1.metric(label="Primary Satellites", value="Sentinel-2 (ESA)")
@@ -199,4 +199,4 @@ st.markdown("""
         <p>Built with ❤️ for the students and researchers of Pakistan</p>
         <div class="watermark">Built by Kashif Sajjad Khan</div>
     </div>
-""", unsafe_with_html=True)
+""", unsafe_allow_html=True)
